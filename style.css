@@ -1,0 +1,360 @@
+
+/* ===== GENERAL STYLING ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: radial-gradient(ellipse at top, #202750, #080d20 75%);
+    color: #f4f5ff;
+    min-height: 100vh;
+    padding: 24px;
+}
+
+/* ===== NAVIGATION BAR ===== */
+.navbar {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: #101832;
+    border: 1px solid #293660;
+    border-radius: 14px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.best-score {
+    font-size: 14px;
+    color: #ffe28a;
+    background: #191d38;
+    border: 1px solid #39365f;
+    padding: 10px 14px;
+    border-radius: 30px;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+.heading {
+    text-align: center;
+    margin: 45px 0 32px;
+}
+
+.tag {
+    color: #a99aff;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.heading h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    margin-bottom: 12px;
+}
+
+.heading h1 span {
+    color: #a99aff;
+}
+
+.heading > p:last-child {
+    color: #aab2d0;
+    line-height: 1.6;
+}
+
+/* ===== STATISTICS CARDS ===== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    background: linear-gradient(145deg, #151d3b, #10162e);
+    border: 1px solid #303d70;
+    border-radius: 15px;
+    padding: 20px 12px;
+    text-align: center;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: #8270ee;
+}
+
+.stat-card p {
+    font-size: 13px;
+    color: #bac2e1;
+    margin-bottom: 10px;
+}
+
+.stat-card h2 {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+/* ===== TYPING AREA ===== */
+.typing-card,
+.result {
+    background: linear-gradient(145deg, #151d3b, #10162e);
+    border: 1px solid #303d70;
+    border-radius: 17px;
+    padding: 26px;
+    box-shadow: 0 15px 40px #00000025;
+}
+
+.typing-card h3 {
+    font-size: 18px;
+    margin-bottom: 17px;
+}
+
+.passage {
+    background: #0b1228;
+    border: 1px solid #28355e;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: #b9c4e8;
+    font-family: Consolas, monospace;
+    font-size: 16px;
+    line-height: 2;
+    overflow-wrap: anywhere;
+}
+
+.passage span.correct {
+    color: #65edb2;
+}
+
+.passage span.incorrect {
+    color: #ff8d9c;
+    background: #582537;
+    border-radius: 3px;
+}
+
+.passage span.current {
+    border-left: 2px solid #b4a1ff;
+}
+
+.typing-card label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #d7dcf5;
+}
+
+textarea {
+    width: 100%;
+    min-height: 115px;
+    resize: vertical;
+    background: #0b1228;
+    color: #ffffff;
+    border: 1px solid #414f87;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.7;
+    outline: none;
+    margin-bottom: 18px;
+}
+
+textarea::placeholder {
+    color: #68769d;
+}
+
+textarea:focus {
+    border-color: #a99aff;
+    box-shadow: 0 0 0 3px #a99aff20;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-track {
+    height: 8px;
+    background: #263153;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #6554ef, #b49aff);
+    border-radius: 20px;
+    transition: width 0.15s;
+}
+
+/* ===== BOTTOM DETAILS ===== */
+.bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 18px 0 22px;
+    font-size: 13px;
+    color: #aab2d0;
+}
+
+#errors {
+    color: #ff7598;
+}
+
+/* ===== BUTTONS ===== */
+button {
+    width: 100%;
+    padding: 14px 18px;
+    border: none;
+    border-radius: 11px;
+    background: linear-gradient(100deg, #7559f6, #8a55f4);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px #7559f655;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+button:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+}
+
+/* ===== RESULTS ===== */
+.result {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.result[hidden] {
+    display: none;
+}
+
+.trophy {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.result h2 {
+    color: #c2b1ff;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.result > p {
+    color: #bac2e1;
+    line-height: 1.6;
+}
+
+.result-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.result-stats div {
+    padding: 17px 10px;
+    background: #0b1228;
+    border: 1px solid #28355e;
+    border-radius: 12px;
+}
+
+.result-stats span,
+.result-stats strong {
+    display: block;
+}
+
+.result-stats span {
+    color: #aab2d0;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.result-stats strong {
+    color: #65edb2;
+    font-size: 24px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    color: #7f8bae;
+    font-size: 13px;
+    margin: 28px 0 10px;
+}
+
+/* ===== MOBILE RESPONSIVE DESIGN ===== */
+@media (max-width: 600px) {
+    body {
+        padding: 14px;
+    }
+
+    .navbar {
+        padding: 15px 12px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .best-score {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .heading {
+        margin: 32px 0 24px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 17px 8px;
+    }
+
+    .typing-card,
+    .result {
+        padding: 17px;
+    }
+
+    .passage {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .bottom-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .result-stats {
+        gap: 8px;
+    }
+}
