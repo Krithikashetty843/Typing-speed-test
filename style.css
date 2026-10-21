@@ -358,3 +358,34 @@ footer {
         gap: 8px;
     }
 }
+
+/* Time Mode Buttons */
+.time-modes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.time-btn {
+    background: #1e1b3a;
+    color: #c4b5fd;
+    border: 1px solid #6d5dfc;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.time-btn:hover {
+    background: #37306b;
+}
+
+.time-btn.active {
+    background: #6d5dfc;
+    color: white;
+    border-color: #8b7cff;
+}
