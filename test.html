@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">⌨️ Typing Speed Test</div>
+        <div class="best-score">🏆 Best WPM: <span id="best">0</span></div>
+    </header>
+
+    <main class="container">
+        <section class="heading">
+            <p class="tag">PRACTICE • IMPROVE • REPEAT</p>
+            <h1>Typing Speed <span>Test</span></h1>
+            <p>Test your typing speed and accuracy. Improve with practice!</p>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <p>◷ Time Left</p>
+                <h2 id="time">30s</h2>
+            </div>
+            <div class="stat-card">
+                <p>⚡ WPM</p>
+                <h2 id="wpm">0</h2>
+            </div>
+            <div class="stat-card">
+                <p>🎯 Accuracy</p>
+                <h2 id="accuracy">100%</h2>
+            </div>
+            <div class="stat-card">
+                <p>🏆 Best WPM</p>
+                <h2 id="best-stat">0</h2>
+            </div>
+        </section>
+
+        <section class="typing-card">
+            <h3>Type the passage below</h3>
+            
+
+
+
+            <div id="passage" class="passage"></div>
+
+            <label for="typing-input">Your typing area</label>
+            <textarea
+                id="typing-input"
+                placeholder="Start typing here..."
+                spellcheck="false"
+                autocomplete="off"
+            ></textarea>
+
+            <div class="progress-track">
+                <div id="progress" class="progress"></div>
+            </div>
+
+            <div class="bottom-row">
+                <span id="errors">Errors: 0</span>
+                <span id="status">Click in the text area and start typing!</span>
+            </div>
+
+            <button id="restart">↻ Restart Test</button>
+        </section>
+
+        <section id="result" class="result" hidden>
+            <div class="trophy">🏆</div>
+            <h2>Test Completed!</h2>
+            <p id="result-message">Great job! Keep practising.</p>
+
+            <div class="result-stats">
+                <div><span>WPM</span><strong id="final-wpm">0</strong></div>
+                <div><span>Accuracy</span><strong id="final-accuracy">100%</strong></div>
+                <div><span>Errors</span><strong id="final-errors">0</strong></div>
+            </div>
+
+            <button id="try-again">↻ Try Again</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with 💜 using HTML, CSS and JavaScript</p>
+    </footer>
+
+</body>
+</html>

@@ -8,8 +8,8 @@ const passages = {
 
     120: "Learning a new skill requires patience, practice, and a positive attitude. Typing is one of the most useful skills for students and professionals because it makes working with computers easier. A good typist can write assignments, prepare reports, send emails, and communicate ideas more quickly. However, speed should not be the only goal. Accuracy is equally important because correcting mistakes takes time. Begin by sitting comfortably and placing your fingers on the correct keys. Try to look at the screen while typing instead of looking down at your hands. Practise common words first, then move on to longer sentences and paragraphs. Over time, your fingers will learn where the keys are located. You will begin to type more naturally without thinking about every individual letter. Taking regular breaks can help you stay comfortable and focused. You can also practise with different passages to become familiar with new words and sentence structures. Record your words per minute and accuracy after every test. Compare your results over several days rather than expecting immediate improvement. Remember that everyone learns at a different pace. Avoid rushing just to achieve a high score. Concentrate on correct typing, maintain a steady rhythm, and gradually challenge yourself. Consistent practice can build confidence and make everyday computer work faster and more enjoyable."
 };
-
-let DURATION = 30;
+const params = new URLSearchParams(window.location.search);
+let DURATION = Number(params.get("duration")) || 30;
 let passageText = passages[DURATION];
 
 const passageElement = document.getElementById("passage");
@@ -192,19 +192,6 @@ function resetTest() {
     updateScreen();
 }
 
-document.querySelectorAll(".time-btn").forEach(button => {
-    button.addEventListener("click", () => {
-        DURATION = Number(button.dataset.time);
-        passageText = passages[DURATION];
-
-        document.querySelectorAll(".time-btn").forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        button.classList.add("active");
-        resetTest();
-    });
-});
 
 input.addEventListener("input", () => {
     if (finished) {
