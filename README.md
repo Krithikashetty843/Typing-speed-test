@@ -35,3 +35,5 @@ Typing Speed Test is a simple and interactive website built using HTML, CSS, and
 
 ## Author
 Created as a web development project to practise HTML, CSS, and JavaScript.
+### Latest Update
+Added a back-to-home button to improve navigation.
