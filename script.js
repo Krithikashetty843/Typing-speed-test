@@ -214,3 +214,10 @@ document.getElementById("try-again").addEventListener("click", resetTest);
 
 displayPassage();
 updateScreen();
+const homeButton = document.getElementById("home-button");
+
+if (homeButton) {
+    homeButton.addEventListener("click", () => {
+        window.location.href = "index.html";
+    });
+}

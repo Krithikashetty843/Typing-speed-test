@@ -389,3 +389,19 @@ footer {
     color: white;
     border-color: #8b7cff;
 }
+.home-button {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 16px;
+    border: 1px solid #6d5dfc;
+    border-radius: 8px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.home-button:hover {
+    background: #6d5dfc;
+}
