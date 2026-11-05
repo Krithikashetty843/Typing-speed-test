@@ -405,3 +405,24 @@ footer {
 .home-button:hover {
     background: #6d5dfc;
 }
+.history-card {
+    margin-top: 25px;
+    padding: 24px;
+    border: 1px solid #393354;
+    border-radius: 16px;
+    background: #17152b;
+}
+
+.history-card h2 {
+    margin-top: 0;
+}
+
+.history-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #393354;
+    font-size: 14px;
+}

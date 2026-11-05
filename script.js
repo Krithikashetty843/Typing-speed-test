@@ -80,9 +80,12 @@ function calculateStats() {
 
 function updateScreen() {
     const stats = calculateStats();
+    
+
+
     const letters = passageElement.querySelectorAll("span");
 
-    letters.forEach((letter, index) => {
+   letters.forEach((letter, index) => {
         letter.className = "";
 
         if (index < stats.typedText.length) {
@@ -146,7 +149,18 @@ function finishTest() {
     input.disabled = true;
 
     const stats = calculateStats();
+const history = JSON.parse(localStorage.getItem("typingHistory")) || [];
 
+history.unshift({
+    date: new Date().toLocaleString(),
+    duration: DURATION,
+    wpm: stats.wpm,
+    accuracy: stats.accuracy,
+    errors: stats.errors
+});
+
+localStorage.setItem("typingHistory", JSON.stringify(history.slice(0, 10)));
+displayHistory();
     if (stats.wpm > bestWpm) {
         bestWpm = stats.wpm;
         localStorage.setItem("typingBest", bestWpm);
@@ -221,3 +235,26 @@ if (homeButton) {
         window.location.href = "index.html";
     });
 }
+function displayHistory() {
+    const historyList = document.getElementById("history-list");
+
+    if (!historyList) return;
+
+    const history = JSON.parse(localStorage.getItem("typingHistory")) || [];
+
+    if (history.length === 0) {
+        historyList.innerHTML = "<p>No completed tests yet.</p>";
+        return;
+    }
+
+    historyList.innerHTML = history.map(test => `
+        <div class="history-item">
+            <span>${test.date}</span>
+            <span>${test.wpm} WPM</span>
+            <span>${test.accuracy}% accuracy</span>
+            <span>${test.errors} errors</span>
+        </div>
+    `).join("");
+}
+
+displayHistory();
