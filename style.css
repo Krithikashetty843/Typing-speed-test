@@ -426,3 +426,46 @@ footer {
     border-bottom: 1px solid #393354;
     font-size: 14px;
 }
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+    display: block;
+    width: auto;
+    margin: 0 20px 15px auto;
+    padding: 10px 16px;
+    border: 1px solid #6d5dfc;
+    border-radius: 10px;
+    background: #17152b;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+body.light-mode {
+    background: #f4f5fb;
+    color: #20233a;
+}
+
+body.light-mode .home-card,
+body.light-mode .typing-card,
+body.light-mode .result,
+body.light-mode .history-card,
+body.light-mode .stat-card {
+    background: #ffffff;
+    color: #20233a;
+    border-color: #d8d9e8;
+}
+
+body.light-mode .passage,
+body.light-mode textarea,
+body.light-mode .result-stats div {
+    background: #f0f1fa;
+    color: #20233a;
+    border-color: #d8d9e8;
+}
+
+body.light-mode .theme-toggle {
+    background: #ffffff;
+    color: #20233a;
+}

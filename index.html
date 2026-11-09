@@ -80,6 +80,9 @@
     </style>
 </head>
 <body>
+    <button id="theme-toggle" class="theme-toggle">
+    🌙 Dark Mode
+</button>
 
     <main class="home-page">
         <div class="home-icon">⌨️</div>
@@ -114,6 +117,29 @@
     </main>
 
     <script>
+        // ===== THEME TOGGLE =====
+const themeToggle = document.getElementById("theme-toggle");
+
+// Load saved theme
+if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.textContent = "🌙 Dark Mode";
+} else {
+    themeToggle.textContent = "☀️ Light Mode";
+}
+
+// Switch theme
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+        themeToggle.textContent = "🌙 Dark Mode";
+    } else {
+        localStorage.setItem("theme", "dark");
+        themeToggle.textContent = "☀️ Light Mode";
+    }
+});
         let selectedDuration = 30;
 
         const timeButtons = document.querySelectorAll(".time-btn");

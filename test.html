@@ -9,7 +9,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-
+<button id="theme-toggle" class="theme-toggle">🌙 Dark Mode</button>
     <header class="navbar">
         <div class="logo">⌨️ Typing Speed Test</div>
         <div class="best-score">🏆 Best WPM: <span id="best">0</span></div>
@@ -94,6 +94,30 @@
     <footer>
         <p>Made with 💜 using HTML, CSS and JavaScript</p>
     </footer>
+    <script>
+    const themeToggle = document.getElementById("theme-toggle");
+
+    // Load saved theme
+    if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light-mode");
+        themeToggle.textContent = "🌙 Dark Mode";
+    } else {
+        themeToggle.textContent = "☀️ Light Mode";
+    }
+
+    // Switch theme
+    themeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+            localStorage.setItem("theme", "light");
+            themeToggle.textContent = "🌙 Dark Mode";
+        } else {
+            localStorage.setItem("theme", "dark");
+            themeToggle.textContent = "☀️ Light Mode";
+        }
+    });
+</script>
 
 </body>
 </html>
