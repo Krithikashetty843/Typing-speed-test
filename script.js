@@ -106,12 +106,12 @@ function calculateStats() {
 
 function updateScreen() {
     const stats = calculateStats();
-    
+
 
 
     const letters = passageElement.querySelectorAll("span");
 
-   letters.forEach((letter, index) => {
+    letters.forEach((letter, index) => {
         letter.className = "";
 
         if (index < stats.typedText.length) {
@@ -175,19 +175,19 @@ function finishTest() {
     input.disabled = true;
 
     const stats = calculateStats();
-const history = JSON.parse(localStorage.getItem("typingHistory")) || [];
+    const history = JSON.parse(localStorage.getItem("typingHistory")) || [];
 
-history.unshift({
-    date: new Date().toLocaleString(),
-    duration: DURATION,
-    difficulty: DIFFICULTY,
-    wpm: stats.wpm,
-    accuracy: stats.accuracy,
-    errors: stats.errors
-});
+    history.unshift({
+        date: new Date().toLocaleString(),
+        duration: DURATION,
+        difficulty: DIFFICULTY,
+        wpm: stats.wpm,
+        accuracy: stats.accuracy,
+        errors: stats.errors
+    });
 
-localStorage.setItem("typingHistory", JSON.stringify(history.slice(0, 10)));
-displayHistory();
+    localStorage.setItem("typingHistory", JSON.stringify(history.slice(0, 10)));
+    displayHistory();
     if (stats.wpm > bestWpm) {
         bestWpm = stats.wpm;
         localStorage.setItem("typingBest", bestWpm);

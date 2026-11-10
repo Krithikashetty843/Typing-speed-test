@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
-<button id="theme-toggle" class="theme-toggle">🌙 Dark Mode</button>
+    <button id="theme-toggle" class="theme-toggle">🌙 Dark Mode</button>
     <header class="navbar">
         <div class="logo">⌨️ Typing Speed Test</div>
         <div class="best-score">🏆 Best WPM: <span id="best">0</span></div>
@@ -43,21 +44,17 @@
         </section>
 
         <section class="typing-card">
-           <h3>Type the passage below</h3>
-<p id="difficulty-display"></p>
-            
+            <h3>Type the passage below</h3>
+            <p id="difficulty-display"></p>
+
 
 
 
             <div id="passage" class="passage"></div>
 
             <label for="typing-input">Your typing area</label>
-            <textarea
-                id="typing-input"
-                placeholder="Start typing here..."
-                spellcheck="false"
-                autocomplete="off"
-            ></textarea>
+            <textarea id="typing-input" placeholder="Start typing here..." spellcheck="false"
+                autocomplete="off"></textarea>
 
             <div class="progress-track">
                 <div id="progress" class="progress"></div>
@@ -85,40 +82,41 @@
             <button id="try-again">↻ Try Again</button>
         </section>
         <section class="history-card">
-    <h2>Recent Test History</h2>
-    <div id="history-list">
-        <p>No completed tests yet.</p>
-    </div>
-</section>
+            <h2>Recent Test History</h2>
+            <div id="history-list">
+                <p>No completed tests yet.</p>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>Made with 💜 using HTML, CSS and JavaScript</p>
     </footer>
     <script>
-    const themeToggle = document.getElementById("theme-toggle");
+        const themeToggle = document.getElementById("theme-toggle");
 
-    // Load saved theme
-    if (localStorage.getItem("theme") === "light") {
-        document.body.classList.add("light-mode");
-        themeToggle.textContent = "🌙 Dark Mode";
-    } else {
-        themeToggle.textContent = "☀️ Light Mode";
-    }
-
-    // Switch theme
-    themeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("light-mode");
-
-        if (document.body.classList.contains("light-mode")) {
-            localStorage.setItem("theme", "light");
+        // Load saved theme
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-mode");
             themeToggle.textContent = "🌙 Dark Mode";
         } else {
-            localStorage.setItem("theme", "dark");
             themeToggle.textContent = "☀️ Light Mode";
         }
-    });
-</script>
+
+        // Switch theme
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+
+            if (document.body.classList.contains("light-mode")) {
+                localStorage.setItem("theme", "light");
+                themeToggle.textContent = "🌙 Dark Mode";
+            } else {
+                localStorage.setItem("theme", "dark");
+                themeToggle.textContent = "☀️ Light Mode";
+            }
+        });
+    </script>
 
 </body>
+
 </html>

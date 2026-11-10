@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,10 +79,11 @@
         }
     </style>
 </head>
+
 <body>
     <button id="theme-toggle" class="theme-toggle">
-    🌙 Dark Mode
-</button>
+        🌙 Dark Mode
+    </button>
 
     <main class="home-page">
         <div class="home-icon">⌨️</div>
@@ -107,11 +108,11 @@
             </div>
             <p>Choose difficulty level</p>
 
-<div class="difficulty-modes">
-    <button class="difficulty-btn active" data-level="easy">Easy</button>
-    <button class="difficulty-btn" data-level="medium">Medium</button>
-    <button class="difficulty-btn" data-level="hard">Hard</button>
-</div>
+            <div class="difficulty-modes">
+                <button class="difficulty-btn active" data-level="easy">Easy</button>
+                <button class="difficulty-btn" data-level="medium">Medium</button>
+                <button class="difficulty-btn" data-level="hard">Hard</button>
+            </div>
 
             <button class="start-button" id="start-test">
                 Start Test →
@@ -125,44 +126,44 @@
 
     <script>
         // ===== THEME TOGGLE =====
-const themeToggle = document.getElementById("theme-toggle");
+        const themeToggle = document.getElementById("theme-toggle");
 
-// Load saved theme
-if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light-mode");
-    themeToggle.textContent = "🌙 Dark Mode";
-} else {
-    themeToggle.textContent = "☀️ Light Mode";
-}
+        // Load saved theme
+        if (localStorage.getItem("theme") === "light") {
+            document.body.classList.add("light-mode");
+            themeToggle.textContent = "🌙 Dark Mode";
+        } else {
+            themeToggle.textContent = "☀️ Light Mode";
+        }
 
-// Switch theme
-themeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
+        // Switch theme
+        themeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
 
-    if (document.body.classList.contains("light-mode")) {
-        localStorage.setItem("theme", "light");
-        themeToggle.textContent = "🌙 Dark Mode";
-    } else {
-        localStorage.setItem("theme", "dark");
-        themeToggle.textContent = "☀️ Light Mode";
-    }
-});
+            if (document.body.classList.contains("light-mode")) {
+                localStorage.setItem("theme", "light");
+                themeToggle.textContent = "🌙 Dark Mode";
+            } else {
+                localStorage.setItem("theme", "dark");
+                themeToggle.textContent = "☀️ Light Mode";
+            }
+        });
         let selectedDuration = 30;
         let selectedDifficulty = "easy";
 
-const difficultyButtons = document.querySelectorAll(".difficulty-btn");
+        const difficultyButtons = document.querySelectorAll(".difficulty-btn");
 
-difficultyButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        selectedDifficulty = button.dataset.level;
+        difficultyButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                selectedDifficulty = button.dataset.level;
 
-        difficultyButtons.forEach(item =>
-            item.classList.remove("active")
-        );
+                difficultyButtons.forEach(item =>
+                    item.classList.remove("active")
+                );
 
-        button.classList.add("active");
-    });
-});
+                button.classList.add("active");
+            });
+        });
 
         const timeButtons = document.querySelectorAll(".time-btn");
 
@@ -179,10 +180,11 @@ difficultyButtons.forEach(button => {
         });
 
         document.getElementById("start-test").addEventListener("click", () => {
-    window.location.href = "test.html?duration=" + selectedDuration +
-        "&difficulty=" + selectedDifficulty;
-});
+            window.location.href = "test.html?duration=" + selectedDuration +
+                "&difficulty=" + selectedDifficulty;
+        });
     </script>
 
 </body>
+
 </html>
