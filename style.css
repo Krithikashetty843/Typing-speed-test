@@ -469,3 +469,36 @@ body.light-mode .theme-toggle {
     background: #ffffff;
     color: #20233a;
 }
+
+/* ===== DIFFICULTY LEVEL BUTTONS ===== */
+.difficulty-modes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 15px 0 25px;
+}
+
+.difficulty-btn {
+    width: auto;
+    min-width: 100px;
+    padding: 10px 22px;
+    background: #1e1b3a;
+    color: #c4b5fd;
+    border: 1px solid #6d5dfc;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.difficulty-btn:hover {
+    background: #37306b;
+}
+
+.difficulty-btn.active {
+    background: #6d5dfc;
+    color: white;
+    border-color: #8b7cff;
+}

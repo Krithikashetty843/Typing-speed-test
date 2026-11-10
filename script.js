@@ -1,17 +1,43 @@
 
+
 const passages = {
-    15: "Practice typing every day to improve your speed. Stay relaxed, focus on accuracy, and keep your fingers moving smoothly across the keyboard.",
+    15: {
+        easy: "I love to learn new things. Practice makes us better every day.",
+        medium: "Regular practice helps improve typing speed and accuracy. Stay focused and keep learning.",
+        hard: "Consistent practice develops precision, confidence, and efficiency. Challenge yourself to improve."
+    },
 
-    30: "Learning to type faster takes patience and regular practice. Good typing skills help students complete assignments and communicate efficiently. Focus on accuracy first, maintain a comfortable posture, and gradually improve your speed. Practice every day to become a confident and faster typist.",
+    30: {
+        easy: "Typing is a useful skill for everyone. We use computers every day to study, work, and communicate. Practice slowly and try to type each word correctly. With regular practice, you can become faster and more confident.",
+        medium: "Learning to type faster requires patience and regular practice. Good typing skills help students complete assignments and communicate efficiently. Focus on accuracy first, maintain a comfortable posture, and gradually improve your speed. Consistent effort will help you become a confident typist.",
+        hard: "Developing exceptional typing proficiency requires discipline, concentration, and perseverance. Prioritise precision over unnecessary speed, maintain consistent rhythm, and minimise repetitive mistakes. Gradually challenge yourself with sophisticated vocabulary and complex sentence structures."
+    },
 
-    60: "Technology has become an important part of our daily lives. Students use computers to learn new skills, complete assignments, and explore different ideas. Typing is a useful skill that helps us work more efficiently. The key to improving typing speed is regular practice. Start slowly and focus on typing each word correctly. As your accuracy improves, your speed will increase naturally. Take short breaks to avoid tiredness and maintain a comfortable sitting position. Keep your hands relaxed and look at the screen instead of the keyboard. With patience and consistent effort, anyone can become a better typist. Set small goals, track your progress, and celebrate every improvement you make.",
+    60: {
+        easy: "Computers are useful tools in our daily lives. Students use them to learn, write assignments, and explore new ideas. Typing is an important skill that makes computer work easier. Start slowly and practise every day. Keep your fingers relaxed and try to look at the screen while typing. Take breaks when you feel tired. Do not worry about making mistakes because mistakes help us learn. Focus on accuracy and gradually increase your speed. Set small goals and celebrate your progress. With patience and regular practice, you can become a better typist.",
+        medium: "Technology has become an important part of modern life. Students use computers to learn new skills, complete assignments, and explore different ideas. Typing efficiently saves time and improves productivity. The key to improving typing speed is regular practice. Begin slowly and focus on entering each word correctly. As your accuracy improves, your speed will increase naturally. Maintain a comfortable sitting position, keep your hands relaxed, and look at the screen instead of the keyboard. Set achievable goals, monitor your performance, and celebrate every improvement. Consistent effort can transform an ordinary typist into a confident and efficient computer user.",
+        hard: "Effective communication increasingly depends on digital proficiency, particularly in academic and professional environments. Advanced typing requires coordination, concentration, and familiarity with diverse vocabulary. Although speed is valuable, accuracy remains essential because correcting mistakes consumes additional time. Establish a sustainable rhythm, maintain ergonomic posture, and avoid unnecessary tension. Gradually introduce challenging terminology, punctuation, and complex sentence structures. Monitor your performance objectively, identify recurring errors, and practise the combinations that cause difficulty. Continuous improvement depends on consistency rather than occasional bursts of effort."
+    },
 
-    120: "Learning a new skill requires patience, practice, and a positive attitude. Typing is one of the most useful skills for students and professionals because it makes working with computers easier. A good typist can write assignments, prepare reports, send emails, and communicate ideas more quickly. However, speed should not be the only goal. Accuracy is equally important because correcting mistakes takes time. Begin by sitting comfortably and placing your fingers on the correct keys. Try to look at the screen while typing instead of looking down at your hands. Practise common words first, then move on to longer sentences and paragraphs. Over time, your fingers will learn where the keys are located. You will begin to type more naturally without thinking about every individual letter. Taking regular breaks can help you stay comfortable and focused. You can also practise with different passages to become familiar with new words and sentence structures. Record your words per minute and accuracy after every test. Compare your results over several days rather than expecting immediate improvement. Remember that everyone learns at a different pace. Avoid rushing just to achieve a high score. Concentrate on correct typing, maintain a steady rhythm, and gradually challenge yourself. Consistent practice can build confidence and make everyday computer work faster and more enjoyable."
+    120: {
+        easy: "Learning a new skill takes time and patience. Typing is useful for students and professionals. It helps us write messages, complete assignments, and prepare documents. Start by sitting comfortably at your computer. Place your fingers on the keyboard and begin with simple words. Try to look at the screen instead of your hands. This will help you learn where the keys are located. Do not rush because accuracy is important. If you make a mistake, correct it and continue practising. Take short breaks to keep your hands comfortable. You can practise with different sentences every day. Record your typing speed and see how much you improve. Set small goals and work towards them. Remember that everyone learns at a different pace. Stay positive and enjoy the process. Regular practice will help you become faster and more confident.",
+        medium: "Learning a new skill requires patience, practice, and a positive attitude. Typing is one of the most useful skills for students and professionals because it makes working with computers easier. A good typist can write assignments, prepare reports, send emails, and communicate ideas more quickly. However, speed should not be the only goal. Accuracy is equally important because correcting mistakes takes time. Begin by sitting comfortably and placing your fingers on the correct keys. Try to look at the screen while typing instead of looking down at your hands. Practise common words first, then move on to longer sentences and paragraphs. Over time, your fingers will learn where the keys are located. Taking regular breaks can help you stay comfortable and focused. Record your words per minute and accuracy after every test. Compare your results over several days rather than expecting immediate improvement. Consistent practice can build confidence and make everyday computer work faster and more enjoyable.",
+        hard: "Mastering keyboard proficiency involves considerably more than memorising the arrangement of individual keys. It requires sustained concentration, precise finger coordination, and the ability to process complex information without interrupting the natural rhythm of typing. Professionals frequently encounter technical terminology, intricate punctuation, numerical expressions, and lengthy documentation that demand exceptional accuracy. Developing these capabilities requires deliberate practice and continuous evaluation. Begin by identifying frequently repeated mistakes and understanding the circumstances in which they occur. Gradually introduce unfamiliar vocabulary, sophisticated sentence structures, and challenging passages. Maintain an ergonomic posture to minimise unnecessary physical strain, particularly during extended sessions. Evaluate both speed and accuracy because impressive performance in one category cannot completely compensate for weaknesses in the other. Establish measurable objectives, monitor improvements consistently, and adjust your practice methods according to the results. Avoid sacrificing precision merely to achieve a higher words-per-minute score. Sustainable progress emerges through patience, analytical thinking, and disciplined repetition. Eventually, consistent training improves efficiency, strengthens confidence, and makes demanding digital communication significantly easier."
+    }
 };
-const params = new URLSearchParams(window.location.search);
-let DURATION = Number(params.get("duration")) || 30;
-let passageText = passages[DURATION];
 
+const params = new URLSearchParams(window.location.search);
+
+let DURATION = Number(params.get("duration")) || 30;
+let DIFFICULTY = params.get("difficulty") || "easy";
+
+let passageText = passages[DURATION]?.[DIFFICULTY] || passages[30].easy;
+const difficultyDisplay = document.getElementById("difficulty-display");
+
+if (difficultyDisplay) {
+    difficultyDisplay.textContent =
+        "Difficulty: " + DIFFICULTY.charAt(0).toUpperCase() + DIFFICULTY.slice(1);
+}
 const passageElement = document.getElementById("passage");
 const input = document.getElementById("typing-input");
 
@@ -154,6 +180,7 @@ const history = JSON.parse(localStorage.getItem("typingHistory")) || [];
 history.unshift({
     date: new Date().toLocaleString(),
     duration: DURATION,
+    difficulty: DIFFICULTY,
     wpm: stats.wpm,
     accuracy: stats.accuracy,
     errors: stats.errors
@@ -251,6 +278,7 @@ function displayHistory() {
         <div class="history-item">
             <span>${test.date}</span>
             <span>${test.wpm} WPM</span>
+            <span>${test.duration} sec - ${test.difficulty || "Easy"}</span>
             <span>${test.accuracy}% accuracy</span>
             <span>${test.errors} errors</span>
         </div>

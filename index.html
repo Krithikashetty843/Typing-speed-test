@@ -105,6 +105,13 @@
                 <button class="time-btn" data-time="60">60 sec</button>
                 <button class="time-btn" data-time="120">120 sec</button>
             </div>
+            <p>Choose difficulty level</p>
+
+<div class="difficulty-modes">
+    <button class="difficulty-btn active" data-level="easy">Easy</button>
+    <button class="difficulty-btn" data-level="medium">Medium</button>
+    <button class="difficulty-btn" data-level="hard">Hard</button>
+</div>
 
             <button class="start-button" id="start-test">
                 Start Test →
@@ -141,6 +148,21 @@ themeToggle.addEventListener("click", () => {
     }
 });
         let selectedDuration = 30;
+        let selectedDifficulty = "easy";
+
+const difficultyButtons = document.querySelectorAll(".difficulty-btn");
+
+difficultyButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        selectedDifficulty = button.dataset.level;
+
+        difficultyButtons.forEach(item =>
+            item.classList.remove("active")
+        );
+
+        button.classList.add("active");
+    });
+});
 
         const timeButtons = document.querySelectorAll(".time-btn");
 
@@ -157,8 +179,9 @@ themeToggle.addEventListener("click", () => {
         });
 
         document.getElementById("start-test").addEventListener("click", () => {
-            window.location.href = "test.html?duration=" + selectedDuration;
-        });
+    window.location.href = "test.html?duration=" + selectedDuration +
+        "&difficulty=" + selectedDifficulty;
+});
     </script>
 
 </body>

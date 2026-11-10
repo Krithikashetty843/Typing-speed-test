@@ -17,7 +17,9 @@ Typing Speed Test is a simple, interactive website built using HTML, CSS, and Ja
 - Restart and try-again options
 - Back-to-home button
 - Responsive user interface
-
+- Three difficulty levels: Easy, Medium, and Hard
+- Light and Dark mode with saved theme preference
+- 12 combinations of typing duration and difficulty
 ## Technologies Used
 
 - HTML5
